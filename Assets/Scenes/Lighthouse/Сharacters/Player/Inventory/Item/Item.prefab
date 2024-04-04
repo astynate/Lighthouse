@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4042081911845247056}
   - component: {fileID: 5389455246698391611}
   - component: {fileID: 8273294831543197698}
-  - component: {fileID: 1281850465453231698}
+  - component: {fileID: 6184709509299993340}
   m_Layer: 0
   m_Name: Collizion
   m_TagString: Untagged
@@ -109,7 +109,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1281850465453231698
+--- !u!114 &6184709509299993340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,10 +118,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5584194644985503320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77defb9a8a7d5cf4b8be32484c5033dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 52ccafc94f3aea9418be2fb9380a4963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasE: {fileID: 0}
+  canvas: {fileID: 0}
   posibilityToRaise: 0
 --- !u!1 &8510068297812226592
 GameObject:
@@ -245,8 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb39b1584d2650241801c6cc0de0af55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasE: {fileID: 0}
-  posibilityToRaise: 0
   _name: "\u0439\u0439\u0439\u0439"
   _picture: {fileID: 21300000, guid: 4498992d1def1da498310bb987311323, type: 3}
 --- !u!64 &4378954089300024339

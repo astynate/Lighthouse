@@ -5,6 +5,8 @@ namespace Assets.Scenes.Lighthouse.Сharacters.Player.Inventory.Item
     public class ItemTrigger: TriggerZone
     {
         public bool posibilityToRaise = false;
+        private PlayerController player;
+        private InventoryItem item;
 
         public new void OnTriggerEnter(Collider other)
         {
@@ -14,9 +16,8 @@ namespace Assets.Scenes.Lighthouse.Сharacters.Player.Inventory.Item
 
             if (other.gameObject.CompareTag("Player"))
             {
-                PlayerController player = other.gameObject.GetComponent<PlayerController>();
-                InventoryItem item = gameObject.transform.parent.GetComponent<InventoryItem>();
-                item.PlayerInZone(player);
+                player = other.gameObject.GetComponent<PlayerController>();
+                item = gameObject.GetComponentInParent<InventoryItem>();
             }
         }
 
@@ -24,6 +25,15 @@ namespace Assets.Scenes.Lighthouse.Сharacters.Player.Inventory.Item
         {
             base.OnTriggerEnter(other);
             posibilityToRaise = false;
+        }
+
+        public void Update()
+        {
+            if (posibilityToRaise && Input.GetKey(KeyCode.E))
+            {
+                player.GetInventory.PutNewObject(item);
+                Destroy(gameObject.transform.parent.gameObject);
+            }
         }
     }
 }

@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
 
     //private float _liftingRadius = 1.5f;
 
-    public void Awake()
+    private void Awake()
     {
-        _playerInventory = new Inventory();
+        _playerInventory = gameObject.AddComponent<Inventory>(); 
     }
 
     private void Start()
