@@ -7,17 +7,20 @@ public class Inventory : MonoBehaviour
     private int _cellForNewObject = 0;
     private Canvas inventoryCanvas;
 
-
-    public void PutNewObject(Canvas canvas, InventoryItem item)
+    private void Awake()
     {
-        inventoryCanvas = canvas;
+        inventoryCanvas = GameObject.FindGameObjectWithTag("InventoryCanvas").GetComponent<Canvas>();
+    }
+
+    public void PutNewObject(InventoryItem item)
+    {
         inventory[_cellForNewObject] = item;
 
         Image[] images = inventoryCanvas.GetComponentsInChildren<Image>();
         Debug.Log($"количество картинок {images.Length}"); 
         if (_cellForNewObject < images.Length)
         {
-            Debug.Log($"долэна сработать смена картинки");
+            Debug.Log($"должна сработать смена картинки");
             Debug.Log(item.GetSprite.name);
             images[_cellForNewObject].sprite = item.GetSprite;
             _cellForNewObject++;
@@ -31,6 +34,6 @@ public class Inventory : MonoBehaviour
    
     public override string ToString()
     {
-        return $"{_cellForNewObject} занятых количестов ячеек";
+        return $"количество {_cellForNewObject} занятых ячеек";
     }
 }
