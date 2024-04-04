@@ -80,9 +80,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -641265805402451953, guid: 26c64d7f23dea294f93d227abfd8b98c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 26c64d7f23dea294f93d227abfd8b98c, type: 3}
       propertyPath: m_Name
       value: lighthouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487528395467894704, guid: 26c64d7f23dea294f93d227abfd8b98c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3369906136111688320, guid: 26c64d7f23dea294f93d227abfd8b98c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
