@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -16,11 +17,27 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
+    private Inventory _playerInventory;
+
+    //private Vector3 lastInteraxtionDir;
+
+    //private float _liftingRadius = 1.5f;
+
+    public void Awake()
+    {
+        _playerInventory = new Inventory();
+    }
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
     }
+
+    //private void Update()
+    //{
+    //    HandleInteractions();
+    //}
 
     private void FixedUpdate()
     {
@@ -33,6 +50,8 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion
                 .LookRotation(Vector3.ClampMagnitude(movement * Time.fixedDeltaTime, 1)), rotationSpeed));
+
+            //lastInteraxtionDir = movement;
         }
 
         Vector3 newPosition = _rigidbody.position + Vector3
@@ -70,5 +89,33 @@ public class PlayerController : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+
+
+    //private void HandleInteractions()
+    //{
+    //    if (Physics.SphereCast(transform.position, _liftingRadius, lastInteraxtionDir, out RaycastHit raycastHit, _liftingRadius))
+    //    {
+    //        if (raycastHit.transform.TryGetComponent(out InventoryItem item) && Input.GetKey(KeyCode.E))
+    //        {
+    //            _playerInventory.PutNewObject(item);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("-");
+    //    }
+    //}
+
+
+    public Inventory GetInventory
+    {
+        get => _playerInventory;
+    }
+
+    public override string ToString()
+    {
+        return $"{_healthPoints} {speed} {rotationSpeed}";
     }
 }
