@@ -1,15 +1,12 @@
 using System;
 using UnityEngine;
 
-public class GeneratorTrigger : MonoBehaviour
+public class Generators : TriggerZone
 {
-    public Canvas canvasE;
     private bool isWorked = true;
     private float workTime;
     private int start;
 
-  
-    // Start is called before the first frame update
     void Start()
     {
         System.Random random = new System.Random();
@@ -17,7 +14,6 @@ public class GeneratorTrigger : MonoBehaviour
         start = Environment.TickCount;
     }
 
-    // Update is called once per frame
     void Update()
     {
         int end = Environment.TickCount;
@@ -27,13 +23,9 @@ public class GeneratorTrigger : MonoBehaviour
             isWorked = false;
         }
 
-        if (canvasE.enabled == true && Input.GetKey(KeyCode.E))
+        if (canvas.enabled == true && Input.GetKey(KeyCode.E))
         {
-            canvasE.enabled = false;
+            canvas.enabled = false;
         }
     }
-
-    public void OnTriggerEnter(Collider other) => canvasE.enabled = true;
-
-    public void OnTriggerExit(Collider other) => canvasE.enabled = false;
 }
