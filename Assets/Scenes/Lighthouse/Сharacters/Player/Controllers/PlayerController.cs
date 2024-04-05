@@ -1,4 +1,6 @@
-using Unity.VisualScripting;
+using System;
+using System.Linq;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [Range(0, 20)] public float speed = 8.0f;
 
     [Range(0, 7)] public float boundaryRadius = 7f;
+
+    public bool isHide = false;
 
     private int _healthPoints = 100;
 
@@ -19,9 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private Inventory _playerInventory;
 
-    //private Vector3 lastInteraxtionDir;
-
-    //private float _liftingRadius = 1.5f;
+    private MeshRenderer[] _meshRenderer;
 
     private void Awake()
     {
@@ -32,15 +34,17 @@ public class PlayerController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
+        _meshRenderer = GetComponentsInChildren<MeshRenderer>();
     }
-
-    //private void Update()
-    //{
-    //    HandleInteractions();
-    //}
 
     private void FixedUpdate()
     {
+        if (isHide == true) 
+        {
+            _animator.SetFloat("Speed", 0);
+            return;
+        }
+
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
 
@@ -50,8 +54,6 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion
                 .LookRotation(Vector3.ClampMagnitude(movement * Time.fixedDeltaTime, 1)), rotationSpeed));
-
-            //lastInteraxtionDir = movement;
         }
 
         Vector3 newPosition = _rigidbody.position + Vector3
@@ -91,31 +93,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
-    //private void HandleInteractions()
-    //{
-    //    if (Physics.SphereCast(transform.position, _liftingRadius, lastInteraxtionDir, out RaycastHit raycastHit, _liftingRadius))
-    //    {
-    //        if (raycastHit.transform.TryGetComponent(out InventoryItem item) && Input.GetKey(KeyCode.E))
-    //        {
-    //            _playerInventory.PutNewObject(item);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("-");
-    //    }
-    //}
-
-
     public Inventory GetInventory
     {
         get => _playerInventory;
     }
 
-    public override string ToString()
+    public void Show()
     {
-        return $"{_healthPoints} {speed} {rotationSpeed}";
+        Array.ForEach(_meshRenderer, 
+            (mesh) => mesh.enabled = true);
+    }
+
+    public void Hide()
+    {
+        Array.ForEach(_meshRenderer,
+            (mesh) => mesh.enabled = false);
     }
 }

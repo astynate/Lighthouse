@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerZone : MonoBehaviour
@@ -10,8 +8,6 @@ public class TriggerZone : MonoBehaviour
     {
         canvas.enabled = true;
     }
-
-
 
     public virtual void OnTriggerExit(Collider other)
     {

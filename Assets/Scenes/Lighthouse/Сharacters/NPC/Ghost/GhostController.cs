@@ -9,8 +9,6 @@ public class GhostController : NPC
 
     private Collider _damageZone;
 
-    private PlayerController _player;
-
     private bool _isPlayerInDamageZone;
 
     private readonly int _damage = 2;
@@ -18,11 +16,9 @@ public class GhostController : NPC
 
     private void Start()
     {
-        GetPlayerObject();
+        GetPlayer();
 
         Collider[] colliders = GetComponentsInChildren<Collider>();
-
-        _player = _playerObject.GetComponent<PlayerController>();
 
         _triggerZone = colliders.FirstOrDefault(collider => collider
             .gameObject.tag == "Trigger Zone");
@@ -33,7 +29,7 @@ public class GhostController : NPC
 
     private IEnumerator MakeDamage()
     {
-        while (_isPlayerInDamageZone == true)
+        while (_isPlayerInDamageZone == true && _player.isHide == false)
         {
             _player.TakeDamage(_damage);
             yield return new WaitForSeconds(1f);
@@ -58,6 +54,5 @@ public class GhostController : NPC
             _isPlayerInDamageZone = false;
             StopCoroutine(MakeDamage());
         }
-
     }
 }

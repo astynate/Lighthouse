@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Assets.Scenes.Lighthouse.Сharacters.NPC
 {
@@ -10,13 +11,21 @@ namespace Assets.Scenes.Lighthouse.Сharacters.NPC
         
         protected GameObject _playerObject;
 
-        public void GetPlayerObject()
+        protected PlayerController _player;
+
+        public void GetPlayer()
         {
             _playerObject = GameObject.FindWithTag("Player");
+            _player = _playerObject.GetComponent<PlayerController>();
         }
 
         public void FollowCharacter()
         {
+            if (_player.isHide == true)
+            {
+                return;
+            }
+
             transform.LookAt(_playerObject.transform);
 
             if (Vector3.Distance(transform.position, _playerObject.transform.position) >= minDistance)

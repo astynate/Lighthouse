@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Interface
   - ICanvas
+  - InventoryCanvas
+  - ClosetDoor
+  - InternalClosetCollizion
   layers:
   - Default
   - TransparentFX
