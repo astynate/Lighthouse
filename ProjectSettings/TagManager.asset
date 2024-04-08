@@ -9,11 +9,14 @@ TagManager:
   - InventoryCanvas
   - ClosetDoor
   - InternalClosetCollizion
+  - Trigger Zone
+  - Damage Zone
+  - CanvasE
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - InventoryItem
   - Water
   - UI
   - 

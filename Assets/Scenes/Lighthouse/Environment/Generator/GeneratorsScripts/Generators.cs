@@ -23,9 +23,9 @@ public class Generators : TriggerZone
             isWorked = false;
         }
 
-        if (canvas.enabled == true && Input.GetKey(KeyCode.E))
-        {
-            canvas.enabled = false;
-        }
+        //if (canvas.enabled == true && Input.GetKey(KeyCode.E))
+        //{
+        //    canvas.enabled = false;
+        //}
     }
 }

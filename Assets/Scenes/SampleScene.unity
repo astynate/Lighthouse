@@ -412,6 +412,10 @@ PrefabInstance:
       propertyPath: _picture
       value: 
       objectReference: {fileID: 21300000, guid: 4498992d1def1da498310bb987311323, type: 3}
+    - target: {fileID: 5584194644985503320, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6031449561759138416, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
       propertyPath: canvasE
       value: 
@@ -435,6 +439,10 @@ PrefabInstance:
     - target: {fileID: 8510068297812226592, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
       propertyPath: m_Name
       value: Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510068297812226592, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -573,6 +581,10 @@ PrefabInstance:
       propertyPath: _picture
       value: 
       objectReference: {fileID: 21300000, guid: 367844499b2d9614b8f105ce24acb24b, type: 3}
+    - target: {fileID: 5584194644985503320, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6031449561759138416, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
       propertyPath: canvasE
       value: 
@@ -592,6 +604,10 @@ PrefabInstance:
     - target: {fileID: 8510068297812226592, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
       propertyPath: m_Name
       value: Item (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510068297812226592, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6335074540202548492, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
@@ -2905,6 +2921,10 @@ PrefabInstance:
       propertyPath: _picture
       value: 
       objectReference: {fileID: 21300000, guid: 4498992d1def1da498310bb987311323, type: 3}
+    - target: {fileID: 5584194644985503320, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6031449561759138416, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
       propertyPath: canvasE
       value: 
@@ -2924,6 +2944,10 @@ PrefabInstance:
     - target: {fileID: 8510068297812226592, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
       propertyPath: m_Name
       value: Item (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510068297812226592, guid: 2a8c118e601ddd44ba57bddf7ff03461, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -3081,7 +3105,7 @@ GameObject:
   - component: {fileID: 1320659584}
   m_Layer: 5
   m_Name: CanvasE
-  m_TagString: Untagged
+  m_TagString: CanvasE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3842,7 +3866,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e52a8259271cb478e1d5faafc6b030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1320659582}
 --- !u!1 &1976945973
 GameObject:
   m_ObjectHideFlags: 0

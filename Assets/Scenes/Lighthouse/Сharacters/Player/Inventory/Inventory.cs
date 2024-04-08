@@ -36,4 +36,12 @@ public class Inventory : MonoBehaviour
     {
         return $"количество {_cellForNewObject} зан€тых €чеек";
     }
+
+    public void ChangeSelectedItem()
+    {
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+
+        }
+    }
 }
