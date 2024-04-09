@@ -1,47 +1,31 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    private InventoryItem[] inventory = new InventoryItem[3];
-    private int _cellForNewObject = 0;
-    private Canvas inventoryCanvas;
+    public static Item[] Items { get; private set; } = new Item[3];
+    public static Item[] SpecialItems { get; private set; } = new Item[8];
+    public static Item[] BoxItems { get; private set; } = new Item[8];
 
-    private void Awake()
+    public delegate void OnItemsChanged();
+
+    public static event OnItemsChanged onItemsChanged;
+
+    private static bool AddItemToArray(Item[] items, ref Item item)
     {
-        inventoryCanvas = GameObject.FindGameObjectWithTag("InventoryCanvas").GetComponent<Canvas>();
-    }
+        int index = Array.FindIndex(Items, x => x == null);
 
-    public void PutNewObject(InventoryItem item)
-    {
-        inventory[_cellForNewObject] = item;
-
-        Image[] images = inventoryCanvas.GetComponentsInChildren<Image>();
-        Debug.Log($"количество картинок {images.Length}"); 
-        if (_cellForNewObject < images.Length)
+        if (index == -1)
         {
-            Debug.Log($"должна сработать смена картинки");
-            Debug.Log(item.GetSprite.name);
-            images[_cellForNewObject].sprite = item.GetSprite;
-            _cellForNewObject++;
-            Debug.Log(this);
+            return false;
         }
-        else
-        {
-            Debug.Log("No more space in the inventory!");
-        }
-    }
-   
-    public override string ToString()
-    {
-        return $"количество {_cellForNewObject} занятых ячеек";
+
+        Items[index] = item;
+        onItemsChanged?.Invoke();
+
+        return true;
     }
 
-    public void ChangeSelectedItem()
-    {
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-
-        }
-    }
+    public static bool AddItem(Item item)
+        => AddItemToArray(Items, ref item);
 }

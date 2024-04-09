@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class Canvss : MonoBehaviour
+public class Canvas : MonoBehaviour
 {
-    Canvas canvas;
+    UnityEngine.Canvas canvas;
+
     void Awake()
     {
-        canvas = GetComponent<Canvas>();
+        canvas = GetComponent<UnityEngine.Canvas>();
+
         if (canvas != null)
         {
             canvas.enabled = false;
         }
-
     }
 
     public void ChangeVisibity()

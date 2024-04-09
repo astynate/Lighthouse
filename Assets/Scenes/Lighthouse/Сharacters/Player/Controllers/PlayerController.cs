@@ -19,26 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
-    private Inventory _playerInventory;
-
     private MeshRenderer[] _meshRenderer;
-
-
-
-    private Vector3 lastInteraxtionDir;
-    private float _playerRadius = .5f;
-    private float _playerRaycastistance = 3f;
-    private LayerMask itemLayerMask;
-    private Canvas InteractionCanvas;
-
-
-
-    private void Awake()
-    {
-        _playerInventory = gameObject.AddComponent<Inventory>();
-        itemLayerMask = LayerMask.GetMask("InventoryItem");
-        InteractionCanvas = GameObject.FindGameObjectWithTag("CanvasE").GetComponent<Canvas>();
-    }
 
     private void Start()
     {
@@ -64,11 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             _rigidbody.MoveRotation(Quaternion.Lerp(transform.rotation, Quaternion
                 .LookRotation(Vector3.ClampMagnitude(movement * Time.fixedDeltaTime, 1)), rotationSpeed));
-
-            lastInteraxtionDir = movement;
         }
-
-        HandleInteractions();
 
         Vector3 newPosition = _rigidbody.position + Vector3
             .ClampMagnitude(movement * Time.fixedDeltaTime * speed, 1);
@@ -107,11 +84,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public Inventory GetInventory
-    {
-        get => _playerInventory;
-    }
-
     public void Show()
     {
         Array.ForEach(_meshRenderer, 
@@ -122,28 +94,5 @@ public class PlayerController : MonoBehaviour
     {
         Array.ForEach(_meshRenderer,
             (mesh) => mesh.enabled = false);
-    }
-
-    private void HandleInteractions()
-    {
-        if (Physics.SphereCast(transform.position, _playerRadius, lastInteraxtionDir, out RaycastHit raycastHit, _playerRaycastistance, itemLayerMask))
-        {
-            if (raycastHit.transform.TryGetComponent(out InventoryItem item))
-            {
-                InteractionCanvas.enabled = true;
-                Debug.Log("обьект найден");
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    _playerInventory.PutNewObject(item);
-                    Destroy(item);
-                }
-            }
-        }
-        else
-        {
-            InteractionCanvas.enabled = false;
-            Debug.Log("обьект потерян");
-        }
-
     }
 }

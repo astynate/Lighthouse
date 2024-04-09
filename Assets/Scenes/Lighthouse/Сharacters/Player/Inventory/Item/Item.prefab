@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 4788050530155833048}
   - component: {fileID: 1622325990153219081}
   - component: {fileID: 6217140822560734549}
-  - component: {fileID: 7782428860765442941}
   - component: {fileID: 4378954089300024339}
+  - component: {fileID: 79701175038564894}
   m_Layer: 0
   m_Name: Item
   m_TagString: ICanvas
@@ -233,20 +233,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7782428860765442941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8510068297812226592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb39b1584d2650241801c6cc0de0af55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _name: "\u0439\u0439\u0439\u0439"
-  _picture: {fileID: 21300000, guid: 4498992d1def1da498310bb987311323, type: 3}
 --- !u!64 &4378954089300024339
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -269,3 +255,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &79701175038564894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8510068297812226592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf30679f49dfa84ea70b60bc9c4b8f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

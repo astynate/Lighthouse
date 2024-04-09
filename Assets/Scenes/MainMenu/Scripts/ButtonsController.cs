@@ -1,31 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
-using Palmmedia.ReportGenerator.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField]
-    public Canvas main;
-    [SerializeField]
-    public Canvas options;
-    [SerializeField]
-    public Canvas loading;
-    [SerializeField]
-    public Scrollbar scrollbar;
-    [SerializeField]
-    public Text loadingInfo;
-    public void Awake(){
+    [SerializeField] public UnityEngine.Canvas main;
+
+    [SerializeField] public UnityEngine.Canvas options;
+
+    [SerializeField] public UnityEngine.Canvas loading;
+
+    [SerializeField] public Scrollbar scrollbar;
+
+    [SerializeField] public Text loadingInfo;
+
+    public void Awake()
+    {
         main.enabled = true;
         loading.enabled = false;
         options.enabled = false;
     }
+
     public void PlayGame()
     {
-        main.enabled= false;
-        loading.enabled= true;
+        main.enabled = false;
+        loading.enabled = true;
         StartCoroutine(LoadSceneAsync("SampleScene"));
     }
 
