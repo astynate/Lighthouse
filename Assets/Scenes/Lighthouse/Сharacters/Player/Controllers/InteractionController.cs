@@ -4,14 +4,14 @@ using UnityEngine.UIElements;
 public class InteractionController : MonoBehaviour
 {
     private PlayerController player;
-    private float _playerRadius = .5f;
+    private float _playerRadius = 3f;
     //private float _playerRaycastistance = 3f;
     private LayerMask itemLayerMask;
-    //private LayerMask ClosetLayerMask;
+    private LayerMask ClosetLayerMask;
     private Canvas InteractionCanvas;
     private Canvas ItemsCanvas;
     private Collider[] hitColliders;
-    private GameObject [] panels;
+    //private GameObject [] panels;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class InteractionController : MonoBehaviour
         //ClosetLayerMask = LayerMask.GetMask("Closets");
         InteractionCanvas = GameObject.FindGameObjectWithTag("CanvasE").GetComponent<Canvas>();
         ItemsCanvas = GameObject.FindGameObjectWithTag("ItemsCanvas").GetComponent<Canvas>();
-        panels = GameObject.FindGameObjectsWithTag("Panel");
+        //panels = GameObject.FindGameObjectsWithTag("Panel");
     }
 
     public void Update()
