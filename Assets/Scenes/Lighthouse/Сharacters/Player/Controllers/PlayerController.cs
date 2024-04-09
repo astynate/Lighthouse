@@ -26,18 +26,10 @@ public class PlayerController : MonoBehaviour
 
 
     private Vector3 lastInteraxtionDir;
-    private float _playerRadius = .5f;
-    private float _playerRaycastistance = 3f;
-    private LayerMask itemLayerMask;
-    private Canvas InteractionCanvas;
-
-
-
+   
     private void Awake()
     {
         _playerInventory = gameObject.AddComponent<Inventory>();
-        itemLayerMask = LayerMask.GetMask("InventoryItem");
-        InteractionCanvas = GameObject.FindGameObjectWithTag("CanvasE").GetComponent<Canvas>();
     }
 
     private void Start()
@@ -68,7 +60,7 @@ public class PlayerController : MonoBehaviour
             lastInteraxtionDir = movement;
         }
 
-        HandleInteractions();
+        //HandleInteractions();
 
         Vector3 newPosition = _rigidbody.position + Vector3
             .ClampMagnitude(movement * Time.fixedDeltaTime * speed, 1);
@@ -124,26 +116,64 @@ public class PlayerController : MonoBehaviour
             (mesh) => mesh.enabled = false);
     }
 
-    private void HandleInteractions()
-    {
-        if (Physics.SphereCast(transform.position, _playerRadius, lastInteraxtionDir, out RaycastHit raycastHit, _playerRaycastistance, itemLayerMask))
-        {
-            if (raycastHit.transform.TryGetComponent(out InventoryItem item))
-            {
-                InteractionCanvas.enabled = true;
-                Debug.Log("обьект найден");
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    _playerInventory.PutNewObject(item);
-                    Destroy(item);
-                }
-            }
-        }
-        else
-        {
-            InteractionCanvas.enabled = false;
-            Debug.Log("обьект потерян");
-        }
+    //private void HandleInteractions()
+    //{
+    //    Collider[] hitColliders = Physics.OverlapSphere(transform.position, _playerRadius, itemLayerMask);
+    //    Debug.Log(hitColliders.Length > 0);
+    //    if (hitColliders.Length > 0)
+    //    {
+    //        InteractionCanvas.enabled = true;
+    //        if (Input.GetKey(KeyCode.E))
+    //        {
+    //            Debug.Log(hitColliders.Length);
+    //            foreach (var collider in hitColliders)
+    //            {
+    //                InventoryItem item = collider.GetComponentInParent<InventoryItem>();
+    //                if (item != null) // Проверка на n
+    //                {
+    //                    Debug.Log(item);
+    //                }
+    //                else
+    //                {
+    //                    Debug.Log("InventoryItem компонент не найден на объекте: " + collider.name);
+    //                }
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        InteractionCanvas.enabled = false;
+    //        Debug.Log("обьект потерян");
+    //    }
 
-    }
+
+
+
+    //    //if (Physics.SphereCast(transform.position, _playerRadius, lastInteraxtionDir, out RaycastHit RayOnItem, _playerRaycastistance, itemLayerMask))
+    //    //{
+    //    //    RayOnItem.transform.TryGetComponent(out InventoryItem item);
+    //    //    InteractionCanvas.enabled = true;
+    //    //    Debug.Log("обьект найден");
+    //    //    if (Input.GetKeyDown(KeyCode.E))
+    //    //    {
+    //    //        _playerInventory.PutNewObject(item);
+    //    //    }
+    //    //}
+    //    //else if (Physics.SphereCast(transform.position, _playerRadius, lastInteraxtionDir, out RaycastHit RayOnCloset, _playerRaycastistance, ClosetLayerMask))
+    //    //{
+    //    //    RayOnCloset.transform.TryGetComponent(out Closet closet);
+    //    //    InteractionCanvas.enabled = true;
+    //    //    Debug.Log("шкаф найден");
+    //    //    if (Input.GetKeyDown(KeyCode.E))
+    //    //    {
+
+    //    //    }
+    //    //}
+    //    //else
+    //    //{
+    //    //    InteractionCanvas.enabled = false;
+    //    //    Debug.Log("обьект потерян");
+    //    //}
+
+    //}
 }

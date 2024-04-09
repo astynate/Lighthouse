@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewBehaviourScript : TriggerZone
+public class Closet : TriggerZone
 {
     private Animator _animator;
 

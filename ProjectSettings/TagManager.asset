@@ -12,6 +12,7 @@ TagManager:
   - Trigger Zone
   - Damage Zone
   - CanvasE
+  - ItemsCanvas
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - InventoryItem
   - Water
   - UI
-  - 
+  - Closets
   - 
   - 
   - 

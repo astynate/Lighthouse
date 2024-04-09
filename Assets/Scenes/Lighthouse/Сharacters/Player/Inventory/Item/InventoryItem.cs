@@ -16,4 +16,9 @@ public class InventoryItem : MonoBehaviour
         get => posibilityToRaise;
         set => posibilityToRaise = value;
     }
+
+    public override string ToString()
+    {
+        return $"{_name}";
+    }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3781768997000503156}
   - component: {fileID: 4761665104331364335}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4093283221338072130}
   - component: {fileID: 332577174574577833}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8009315511387304782}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ClosetToHide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,7 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7482027393664583203}
   - component: {fileID: 6066816815125894920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2058510632034119855}
   - component: {fileID: 7766168053814047670}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 6896868573730491268}
   - component: {fileID: 4201517836106417061}
   - component: {fileID: 5512884221303056830}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collizion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33592577ded06f540ad0cdf21176faa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
 --- !u!1 &6149231913996740087
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7415914819831611319}
   - component: {fileID: 4651554948520216244}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 595690475227690201}
   - component: {fileID: 5005062523141073493}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InternalCollizion
   m_TagString: InternalClosetCollizion
   m_Icon: {fileID: 0}
@@ -543,6 +542,10 @@ PrefabInstance:
       value: Door
       objectReference: {fileID: 0}
     - target: {fileID: -8391222552659086748, guid: 23494b28bb515354a8647f57d7476778, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 23494b28bb515354a8647f57d7476778, type: 3}
       propertyPath: m_TagString
       value: ClosetDoor
       objectReference: {fileID: 0}
@@ -550,9 +553,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frame-2
       objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: 23494b28bb515354a8647f57d7476778, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -7146521406498821007, guid: 23494b28bb515354a8647f57d7476778, type: 3}
       propertyPath: m_Name
       value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: 23494b28bb515354a8647f57d7476778, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: 23494b28bb515354a8647f57d7476778, type: 3}
       propertyPath: m_LocalPosition.x
@@ -562,13 +573,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frame-1
       objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 23494b28bb515354a8647f57d7476778, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -466329591000292508, guid: 23494b28bb515354a8647f57d7476778, type: 3}
       propertyPath: m_Name
       value: Frame-3
       objectReference: {fileID: 0}
+    - target: {fileID: -466329591000292508, guid: 23494b28bb515354a8647f57d7476778, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 23494b28bb515354a8647f57d7476778, type: 3}
       propertyPath: m_Name
       value: ClosetToHide
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 23494b28bb515354a8647f57d7476778, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
