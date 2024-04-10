@@ -1,5 +1,4 @@
 ﻿using Assets.Scenes.Lighthouse;
-using System;
 using UnityEngine;
 
 public class InteractionController : MonoBehaviour
@@ -12,7 +11,7 @@ public class InteractionController : MonoBehaviour
 
     private float currentTime = 0.0f;
 
-    private float toWait = 0.5f;
+    private float toWait = 0.1f;
 
     private void Awake()
     {
@@ -33,8 +32,6 @@ public class InteractionController : MonoBehaviour
     private void HandleInteractions()
     {
         _hitColliders = Physics.OverlapSphere(transform.position, _playerRadius, _itemLayerMask);
-
-        Debug.Log(_hitColliders.Length);
 
         if (_hitColliders.Length == 1 && Input.GetKey(KeyCode.E))
         {

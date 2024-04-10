@@ -15,14 +15,15 @@ public class Inventory : MonoBehaviour
     {
         int index = Array.FindIndex(Items, x => x == null);
 
-        if (index == -1)
+        if (item.inInvenory || index == -1)
         {
             return false;
         }
 
+        item.inInvenory = true;
         Items[index] = item;
-        onItemsChanged?.Invoke();
 
+        onItemsChanged?.Invoke();
         return true;
     }
 

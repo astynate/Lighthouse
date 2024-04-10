@@ -12,7 +12,7 @@ public class PlayerStats : MonoBehaviour
             .GetComponentsInChildren<Text>()[0];
     }
 
-    void FixedUpdate()
+    void Update()
     {
         _stats.text = $"HP: {Configuration.PlayerController.GetHealthPoints}";
     }
