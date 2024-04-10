@@ -3,26 +3,28 @@ using UnityEngine.UI;
 
 public class Cell : MonoBehaviour
 {
+    [SerializeField] public Image SelectedImage;
+
+    [SerializeField] public Image Image;
+
     private Item _item;
 
-    private Image _image;
-
-    private void Start()
+    private void Awake()
     {
-        _image = GetComponentInChildren<Image>();
+        SelectedImage.enabled = false;
     }
 
     private void SetImage()
     {
         if (_item != null && _item.Image != null)
         {
-            _image.sprite = _item.Image;
-            _image.enabled = true;
+            Image.sprite = _item.Image;
+            Image.enabled = true;
         }
         else
         {
-            _image.sprite = null;
-            _image.enabled = false;
+            Image.sprite = null;
+            Image.enabled = false;
         }
     }
 
@@ -30,4 +32,10 @@ public class Cell : MonoBehaviour
     {
         _item = item; SetImage();
     }
+
+    public void Select() 
+        => SelectedImage.enabled = true;
+    
+    public void UnSelect() 
+        => SelectedImage.enabled = false;
 }

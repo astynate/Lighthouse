@@ -1,4 +1,5 @@
 ﻿using Assets.Scenes.Lighthouse;
+using System;
 using UnityEngine;
 
 public class InteractionController : MonoBehaviour
@@ -9,9 +10,11 @@ public class InteractionController : MonoBehaviour
 
     private Collider[] _hitColliders;
 
-    private float currentTime = 0.0f;
+    private float _currentTime = 0.0f;
 
-    private float toWait = 0.1f;
+    private float _toWait = 0.1f;
+
+    private KeyCode[] _inventoryKeycodes = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3 };
 
     private void Awake()
     {
@@ -20,12 +23,28 @@ public class InteractionController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        currentTime += Time.fixedDeltaTime;
+        _currentTime += Time.fixedDeltaTime;
 
-        if (currentTime > toWait) 
+        if (_currentTime > _toWait)
         {        
             HandleInteractions();
-            currentTime = 0.0f;
+            _currentTime = 0.0f;
+        }
+    }
+
+    private void Update()
+    {
+        foreach (KeyCode keycode in _inventoryKeycodes)
+        {
+            if (Input.GetKey(keycode))
+            {
+                Inventory.SetCurrentItemIndex(Array.IndexOf(_inventoryKeycodes, keycode));
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Inventory.RemoveElement();
         }
     }
 
@@ -36,8 +55,9 @@ public class InteractionController : MonoBehaviour
         if (_hitColliders.Length == 1 && Input.GetKey(KeyCode.E))
         {
             Configuration.InteractionCanvas.enabled = true;
-            Inventory.AddItem(_hitColliders[0].GetComponent<Item>());
+            Item item = _hitColliders[0].GetComponent<Item>();
 
+            Inventory.AddItem(ref item);
             _hitColliders[0].transform.position = new Vector3(200f, 200f, 200f);
         }
     }
