@@ -12,6 +12,9 @@ TagManager:
   - Trigger Zone
   - Damage Zone
   - CanvasE
+  - InventoryMenu
+  - Inventory
+  - InteractionCanvas
   layers:
   - Default
   - TransparentFX

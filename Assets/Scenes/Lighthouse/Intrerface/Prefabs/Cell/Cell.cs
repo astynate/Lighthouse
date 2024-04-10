@@ -28,6 +28,7 @@ public class Cell : MonoBehaviour
 
     public void Redraw(ref Item item)
     {
+        Debug.Log(item.Image);
         _item = item; SetImage();
     }
 }

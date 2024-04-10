@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TestGeneratorHandler : MonoBehaviour
@@ -24,7 +21,4 @@ public class TestGeneratorHandler : MonoBehaviour
            generator.notWorkingMessage.worldCamera = camera;
         }
     }
-
-
-
 }

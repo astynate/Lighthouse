@@ -21,7 +21,7 @@ namespace TMPro.Examples
 
 
         private TextMeshProUGUI m_TextMeshPro;
-        private Canvas m_Canvas;
+        private UnityEngine.Canvas m_Canvas;
         private Camera m_Camera;
 
         // Flags
@@ -39,7 +39,7 @@ namespace TMPro.Examples
             m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
 
 
-            m_Canvas = gameObject.GetComponentInParent<Canvas>();
+            m_Canvas = gameObject.GetComponentInParent<UnityEngine.Canvas>();
 
             // Get a reference to the camera if Canvas Render Mode is not ScreenSpace Overlay.
             if (m_Canvas.renderMode == RenderMode.ScreenSpaceOverlay)

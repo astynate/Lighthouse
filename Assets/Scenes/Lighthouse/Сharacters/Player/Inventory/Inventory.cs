@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 
     public static event OnItemsChanged onItemsChanged;
 
-    private static bool AddItemToArray(Item[] items, ref Item item)
+    private static bool AddItemToArray(ref Item item)
     {
         int index = Array.FindIndex(Items, x => x == null);
 
@@ -27,5 +27,5 @@ public class Inventory : MonoBehaviour
     }
 
     public static bool AddItem(Item item)
-        => AddItemToArray(Items, ref item);
+        => AddItemToArray(ref item);
 }

@@ -8,8 +8,8 @@ public class TestGenerator : MonoBehaviour
     public float TimeBeforeEnd = 30;
     public float MinDelayBeforeBreakdowns = 100;
     public ParticleSystem particleSystem;
-    public Canvas workingMessage;
-    public Canvas notWorkingMessage;
+    public UnityEngine.Canvas workingMessage;
+    public UnityEngine.Canvas notWorkingMessage;
     public event Action EndGame;
     private bool _isPlayerInside = false;
     private System.Random random= new System.Random();

@@ -7,6 +7,7 @@ namespace Assets.Scenes.Lighthouse
         public static Configuration Instance { get; private set; }
         public static GameObject PlayerObject { get; set; }
         public static PlayerController PlayerController { get; set; }
+        public static UnityEngine.Canvas InteractionCanvas { get; set; }
 
         private void Awake()
         {
@@ -20,6 +21,9 @@ namespace Assets.Scenes.Lighthouse
 
             PlayerObject = GameObject.FindGameObjectWithTag("Player");
             PlayerController = PlayerObject.GetComponent<PlayerController>();
+
+            InteractionCanvas = GameObject.FindGameObjectWithTag("InteractionCanvas")
+                .GetComponent<UnityEngine.Canvas>();
 
             DontDestroyOnLoad(gameObject);
         }
