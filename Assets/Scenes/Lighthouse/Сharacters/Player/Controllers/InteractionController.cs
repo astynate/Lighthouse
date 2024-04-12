@@ -1,5 +1,8 @@
 ﻿using Assets.Scenes.Lighthouse;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class InteractionController : MonoBehaviour
 {
@@ -11,7 +14,10 @@ public class InteractionController : MonoBehaviour
 
     private float currentTime = 0.0f;
 
-    private float toWait = 0.1f;
+    private float toWait = 0.3f;
+
+    public GameObject ScrollElementPrefab;
+
 
     private void Awake()
     {
@@ -40,5 +46,58 @@ public class InteractionController : MonoBehaviour
 
             _hitColliders[0].transform.position = new Vector3(200f, 200f, 200f);
         }
+        else if (_hitColliders.Length > 1)
+        {
+            Configuration.ScrollViewCanvas.enabled = true;
+
+            DeleteAllTagObjects();
+
+            foreach (Collider item in _hitColliders)
+            {
+                NewItemToScrollBar(item.GetComponent<Item>());
+            }
+        }
+        else {
+            Configuration.ScrollViewCanvas.enabled = false;
+        }
     }
+
+
+
+    private void NewItemToScrollBar(Item item)
+    {
+        GameObject instance = Instantiate(ScrollElementPrefab);
+
+        instance.transform.SetParent(Configuration.ScrollView.transform);
+
+        instance.tag = "PanelTag";
+
+        Transform child1 = instance.transform.GetChild(0);
+        Transform child2 = instance.transform.GetChild(1);
+
+        Image childImage = child1.GetComponent<Image>();
+        childImage.sprite = item.Image;
+
+        Button childButton = child2.GetComponent<Button>();
+        Debug.Log(childButton.GetType());
+
+        childButton.onClick.AddListener(M);
+    }
+
+
+    private void M()
+    {
+        Debug.Log("кнопка нажата");
+    }
+
+
+    void DeleteAllTagObjects()
+    {
+        GameObject[] itemInScrollBar = GameObject.FindGameObjectsWithTag("PanelTag");
+        foreach (GameObject item in itemInScrollBar)
+        {
+            Destroy(item);
+        }
+    }
+
 }

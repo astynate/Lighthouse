@@ -15,6 +15,9 @@ TagManager:
   - InventoryMenu
   - Inventory
   - InteractionCanvas
+  - Bar
+  - PanelTag
+  - ScrollContent
   layers:
   - Default
   - TransparentFX
