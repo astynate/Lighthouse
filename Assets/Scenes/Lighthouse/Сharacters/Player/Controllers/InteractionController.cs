@@ -16,10 +16,13 @@ public class InteractionController : MonoBehaviour
     private float _toWait = 0.1f;
 
     private KeyCode[] _inventoryKeycodes = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3 };
+<<<<<<< HEAD
 
     private int _countItems = 0;
 
     public GameObject ScrollElementPrefab;
+=======
+>>>>>>> 7775d72ed8a02fb652f30de686474680c6e82ddf
 
     private void Awake()
     {
@@ -60,6 +63,7 @@ public class InteractionController : MonoBehaviour
         if (_hitColliders.Length == 1 && Input.GetKey(KeyCode.E))
         {
             Configuration.InteractionCanvas.enabled = true;
+<<<<<<< HEAD
 
             Item item = _hitColliders[0].GetComponent<Item>();
             Inventory.AddItem(_hitColliders[0], item);
