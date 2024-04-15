@@ -12,7 +12,7 @@ namespace Assets.Scenes.Lighthouse.Сharacters.Player.Inventory
         {
             if (posibilityToRaise && Input.GetKey(KeyCode.E))
             {
-                global::Inventory.AddItem(item);
+                global::Inventory.AddItem(ref item);
                 posibilityToRaise = false;
             }
         }

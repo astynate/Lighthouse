@@ -52,4 +52,19 @@ public class InventoryMenu : InventoryObserver
             _inventoryCells[i].Redraw(ref Inventory.Items[i]);
         }
     }
+
+    protected override void HandleSelect()
+    {
+        for (int i = 0; i < _inventoryCells.Length; i++)
+        {
+            if (i == Inventory.CurrentItemIndex)
+            {
+                _inventoryCells[i].Select();
+            }
+            else
+            {
+                _inventoryCells[i].UnSelect();
+            }
+        }
+    }
 }

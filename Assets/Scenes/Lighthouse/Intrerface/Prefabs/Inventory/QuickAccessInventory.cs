@@ -1,4 +1,5 @@
 using Assets.Scenes.Lighthouse;
+using UnityEngine;
 
 public class QuikAccessInventory : InventoryObserver
 {
@@ -14,6 +15,21 @@ public class QuikAccessInventory : InventoryObserver
         for (int i = 0; i < _cells.Length; i++)
         {
             _cells[i].Redraw(ref Inventory.Items[i]);
+        }
+    }
+
+    protected override void HandleSelect()
+    {
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            if (i == Inventory.CurrentItemIndex)
+            {
+                _cells[i].Select();
+            } 
+            else
+            {
+                _cells[i].UnSelect();
+            }
         }
     }
 }

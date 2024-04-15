@@ -1,16 +1,15 @@
+using Assets.Scenes.Lighthouse;
 using UnityEngine;
 
 public class TriggerZone : MonoBehaviour
 {
-    public UnityEngine.Canvas canvas;
-
     public virtual void OnTriggerEnter(Collider other)
     {
-        canvas.enabled = true;
+        Configuration.InteractionCanvas.enabled = true;
     }
 
     public virtual void OnTriggerExit(Collider other)
     {
-        canvas.enabled = false;
+        Configuration.InteractionCanvas.enabled = false;
     }
 }

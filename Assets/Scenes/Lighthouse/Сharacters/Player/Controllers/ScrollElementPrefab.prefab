@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 5781957511657874627}
   m_Layer: 5
   m_Name: ScrollElementPrefab
-  m_TagString: Untagged
+  m_TagString: Bar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
