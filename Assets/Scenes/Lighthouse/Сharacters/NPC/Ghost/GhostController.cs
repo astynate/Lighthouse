@@ -13,7 +13,6 @@ public class GhostController : NPC
 
     private readonly int _damage = 2;
 
-
     private void Start()
     {
         GetPlayer();
@@ -38,11 +37,6 @@ public class GhostController : NPC
 
     private void FixedUpdate()
     {
-        if (_triggerZone.bounds.Contains(_playerObject.transform.position))
-        {
-            FollowCharacter();
-        }
-
         if (_damageZone.bounds.Contains(_playerObject.transform.position) && _isPlayerInDamageZone == false)
         {
             _isPlayerInDamageZone = true;
@@ -54,5 +48,11 @@ public class GhostController : NPC
             _isPlayerInDamageZone = false;
             StopCoroutine(MakeDamage());
         }
+    }
+
+    private void Update()
+    {
+        Debug.Log(_triggerZone.bounds.Contains(_playerObject.transform.position));
+        Walk(_triggerZone.bounds.Contains(_playerObject.transform.position));
     }
 }
