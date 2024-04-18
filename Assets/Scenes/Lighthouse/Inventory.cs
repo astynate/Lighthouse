@@ -62,8 +62,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public static void AddItem(ref Item item)
+    internal static void UseCurrentItem()
     {
-        AddItemToArray(ref item);
+        if (Items[CurrentItemIndex] != null)
+        {
+            Items[CurrentItemIndex].Interact();
+        }
     }
 }

@@ -12,11 +12,8 @@ namespace Assets.Scenes.Lighthouse
         public static UnityEngine.Canvas InventoryCanvas { get; set; }
         public static Vector3 DragableItemTransform { get; set; }
         public static Cell DragableCell { get; set; }
-<<<<<<< HEAD
         public static UnityEngine.Canvas ScrollViewCanvas { get; set; }
         public static Image ScrollView { get; set; }
-=======
->>>>>>> 7775d72ed8a02fb652f30de686474680c6e82ddf
 
         private void Awake()
         {

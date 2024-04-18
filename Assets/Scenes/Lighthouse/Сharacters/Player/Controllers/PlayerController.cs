@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isHide == true) 
+        if (isHide == true)
         {
             _animator.SetFloat("Speed", 0);
             return;
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(horizontalMovement, 0.0f, verticalMovement);
+        Vector3 movement = new Vector3(-horizontalMovement, 0.0f, verticalMovement);
 
         if (movement != Vector3.zero)
         {
@@ -50,13 +51,18 @@ public class PlayerController : MonoBehaviour
         Vector3 newPosition = _rigidbody.position + Vector3
             .ClampMagnitude(movement * Time.fixedDeltaTime * speed, 1);
 
-        if (newPosition.magnitude < boundaryRadius)
+        Vector2 circle = new Vector2(newPosition.x, newPosition.z);
+
+        if (circle.magnitude < boundaryRadius)
         {
             _rigidbody.MovePosition(newPosition);
         }
         else
         {
-            _rigidbody.MovePosition(newPosition.normalized * boundaryRadius);
+            Vector3 boundaryPosition = new Vector3(circle.normalized.x * boundaryRadius, newPosition.y,
+                circle.normalized.y * boundaryRadius);
+
+            _rigidbody.MovePosition(boundaryPosition);
         }
 
         _animator.SetFloat("Speed", Vector3.ClampMagnitude(movement, 1).magnitude);
@@ -65,7 +71,7 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(new Vector3(0f, 0f, 0f), boundaryRadius);
+        Gizmos.DrawWireSphere(new Vector3(0f, transform.position.y, 0f), boundaryRadius);
     }
 
     public int GetHealthPoints => _healthPoints;
