@@ -69,4 +69,12 @@ public class Inventory : MonoBehaviour
             Items[CurrentItemIndex].Interact();
         }
     }
+
+    internal static void OnSelect()
+    {
+        if (Items[CurrentItemIndex] != null)
+        {
+            Items[CurrentItemIndex].OnSelect();
+        }
+    }
 }

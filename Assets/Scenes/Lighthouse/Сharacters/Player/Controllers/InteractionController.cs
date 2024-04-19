@@ -31,7 +31,7 @@ public class InteractionController : MonoBehaviour
         _currentTime += Time.fixedDeltaTime;
 
         if (_currentTime > _toWait)
-        {        
+        {   
             HandleInteractions();
             _currentTime = 0.0f;
         }
@@ -56,6 +56,8 @@ public class InteractionController : MonoBehaviour
         {
             Inventory.UseCurrentItem();
         }
+
+        Inventory.OnSelect();
     }
 
     private void HandleInteractions()

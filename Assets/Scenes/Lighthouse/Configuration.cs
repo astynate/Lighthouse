@@ -14,6 +14,7 @@ namespace Assets.Scenes.Lighthouse
         public static Cell DragableCell { get; set; }
         public static UnityEngine.Canvas ScrollViewCanvas { get; set; }
         public static Image ScrollView { get; set; }
+        public static GameObject RightHand { get; set; }
 
         private void Awake()
         {
@@ -26,7 +27,10 @@ namespace Assets.Scenes.Lighthouse
             Instance = this;
 
             PlayerObject = GameObject.FindGameObjectWithTag("Player");
+
             PlayerController = PlayerObject.GetComponent<PlayerController>();
+
+            RightHand = GameObject.FindWithTag("Arm");
 
             InteractionCanvas = GameObject.FindGameObjectWithTag("InteractionCanvas")
                 .GetComponent<UnityEngine.Canvas>();

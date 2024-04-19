@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour, IInteract
+public abstract class Item : MonoBehaviour
 {
     [SerializeField] public string Name;
+
+    [SerializeField] public string Description;
 
     [SerializeField] public Sprite Image;
 
     [SerializeField] public bool inInvenory = false;
 
-    public void Interact()
-    {
-        Debug.Log("!");
-    }
+    public abstract void Interact();
+    public abstract void OnSelect();
 }

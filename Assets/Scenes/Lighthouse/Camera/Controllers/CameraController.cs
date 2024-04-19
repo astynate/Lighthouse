@@ -6,8 +6,11 @@ public class CameraController : MonoBehaviour
 
     public Vector3 offset;
 
+    [Range(1, 5)] public int depth = 2;
+
     void Update()
     {
-        transform.position = new Vector3(0f, playerTransform.position.y, 0f) + offset;
+        transform.position = new Vector3(playerTransform.position.x / depth, playerTransform.position.y, 
+            playerTransform.position.z / depth) + offset;
     }
 }

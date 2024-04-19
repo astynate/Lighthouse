@@ -18,6 +18,7 @@ TagManager:
   - Bar
   - PanelTag
   - ScrollContent
+  - Arm
   layers:
   - Default
   - TransparentFX
