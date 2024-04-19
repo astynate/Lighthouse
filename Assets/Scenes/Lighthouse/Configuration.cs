@@ -15,6 +15,8 @@ namespace Assets.Scenes.Lighthouse
         public static UnityEngine.Canvas ScrollViewCanvas { get; set; }
         public static Image ScrollView { get; set; }
 
+        public static bool isCall = false;
+
         private void Awake()
         {
             if (Instance != null)

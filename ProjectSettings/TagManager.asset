@@ -18,6 +18,7 @@ TagManager:
   - Bar
   - PanelTag
   - ScrollContent
+  - Telephone
   layers:
   - Default
   - TransparentFX
