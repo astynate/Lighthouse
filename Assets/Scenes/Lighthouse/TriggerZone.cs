@@ -1,7 +1,7 @@
 using Assets.Scenes.Lighthouse;
 using UnityEngine;
 
-public class TriggerZone : MonoBehaviour
+public abstract class TriggerZone : MonoBehaviour
 {
     public virtual void OnTriggerEnter(Collider other)
     {
@@ -12,4 +12,14 @@ public class TriggerZone : MonoBehaviour
     {
         Configuration.InteractionCanvas.enabled = false;
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interact();
+        }
+    }
+
+    public abstract void Interact();
 }

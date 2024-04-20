@@ -77,4 +77,7 @@ public class Inventory : MonoBehaviour
             Items[CurrentItemIndex].OnSelect();
         }
     }
+
+    public static void InvokeChangeEvent() 
+        => onItemsChanged?.Invoke();
 }

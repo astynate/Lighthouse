@@ -1,5 +1,4 @@
 using Assets.Scenes.Lighthouse;
-using UnityEngine;
 
 public class QuikAccessInventory : InventoryObserver
 {
@@ -8,6 +7,12 @@ public class QuikAccessInventory : InventoryObserver
     void Awake()
     {
         _cells = GetComponentsInChildren<Cell>();
+
+        for (int i = 0; i < _cells.Length; i++)
+        {
+            _cells[i].Items = Inventory.Items;
+            _cells[i].Index = i;
+        }
     }
 
     protected override void HandleItemsChanged()

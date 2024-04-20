@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewBehaviourScript : TriggerZone
+public class Closet : TriggerZone
 {
     private Animator _animator;
 
@@ -73,5 +73,10 @@ public class NewBehaviourScript : TriggerZone
     {
         _isAvailable = true;
         _isPlayerInCollider = false;
+    }
+
+    public override void Interact()
+    {
+        
     }
 }

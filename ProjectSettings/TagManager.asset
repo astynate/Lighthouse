@@ -19,6 +19,9 @@ TagManager:
   - PanelTag
   - ScrollContent
   - Arm
+  - Undefined
+  - Special
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -29,8 +32,8 @@ TagManager:
   - Cell
   - Walls
   - Walls-Mesh
-  - 
-  - 
+  - Special
+  - Box
   - 
   - 
   - 

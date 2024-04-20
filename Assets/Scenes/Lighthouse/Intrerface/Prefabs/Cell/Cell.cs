@@ -2,6 +2,7 @@ using Assets.Scenes.Lighthouse;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Inventory;
 
 public class Cell : MonoBehaviour, IDragHandler, IDropHandler
 {
@@ -15,8 +16,16 @@ public class Cell : MonoBehaviour, IDragHandler, IDropHandler
 
     private Vector3 _cellOriginalTransform;
 
+    public Item[] Items;
+
+    public int Index;
+
+    private UnityEngine.Canvas _canvas;
+
     private void Awake()
     {
+        _canvas = GetComponentInParent<UnityEngine.Canvas>();
+        _canvas.sortingOrder = 5;
         SelectedImage.enabled = false;
         _rectTransform = Image.GetComponent<RectTransform>();
     }
@@ -55,22 +64,24 @@ public class Cell : MonoBehaviour, IDragHandler, IDropHandler
         {
             Configuration.DragableCell = this;
 
-            //_rectTransform.anchoredPosition += eventData.delta /
-            //    Configuration.InventoryCanvas.scaleFactor;
+            _rectTransform.anchoredPosition += eventData.delta /
+                Configuration.InventoryCanvas.scaleFactor;
         }
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag == null || Configuration.DragableCell == null)
+        if (Configuration.DragableCell == null || Configuration.DragableCell._item == _item)
         {
             return;
         }
 
-        Item buff = Configuration.DragableCell._item;
-        Configuration.DragableCell.Redraw(ref _item);
+        Item buff = Items[Index];
+        Items[Index] = Configuration.DragableCell.Items[Configuration.DragableCell.Index];
 
-        Redraw(ref buff);
+        Configuration.DragableCell.Items[Configuration.DragableCell.Index] = buff;
         Configuration.DragableCell = null;
+
+        InvokeChangeEvent();
     }
 }
