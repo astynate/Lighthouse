@@ -4,14 +4,14 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GeneratorHandler : MonoBehaviour
+public class GeneratorHandler
 {
-    public Text Working;
-    public Text NotWorking;
     public int MaxBrokenCount;
     private BasicGenerator[] _inGameGenerators;
     private List<BasicGenerator> _workingGenerators = new();
     private List<BasicGenerator> _brokenGenerators = new();
+    public int NowWorking;
+    public int NowNotWorking;
     public void RepairGenerator(BasicGenerator generator){
         _brokenGenerators.Remove(generator);
         _workingGenerators.Add(generator);
@@ -48,7 +48,7 @@ public class GeneratorHandler : MonoBehaviour
     }
     public void Update(){
         HandleBreakdowns();
-        Working.text = _workingGenerators.Count().ToString();
-        NotWorking.text = _brokenGenerators.Count().ToString();
+        NowWorking = _workingGenerators.Count();
+        NowNotWorking = _brokenGenerators.Count();
     }
 }
