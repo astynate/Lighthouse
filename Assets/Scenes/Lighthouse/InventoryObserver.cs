@@ -8,6 +8,8 @@ namespace Assets.Scenes.Lighthouse
         {
             Inventory.onItemsChanged += HandleItemsChanged;
             Inventory.onSelect += HandleSelect;
+
+            Inventory.SetCurrentItemIndex(0);
         }
 
         private void OnDisable()

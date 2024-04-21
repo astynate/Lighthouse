@@ -85,10 +85,8 @@ public class InteractionController : MonoBehaviour
 
             _countItems = _hitColliders.Length;
         }
-        else if (_hitColliders.Length == 0)
-        {
-            Configuration.ScrollViewCanvas.enabled = false;
-        }
+
+        Configuration.ScrollViewCanvas.enabled = false;
     }
 
     private void NewItemToScrollBar(Collider hitCollider, Item item)

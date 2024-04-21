@@ -15,6 +15,7 @@ namespace Assets.Scenes.Lighthouse
         public static UnityEngine.Canvas ScrollViewCanvas { get; set; }
         public static Image ScrollView { get; set; }
         public static GameObject RightHand { get; set; }
+        public static InventoryMenu InventoryMenuInstance { get; set; }
 
         private void Awake()
         {
@@ -31,6 +32,9 @@ namespace Assets.Scenes.Lighthouse
             PlayerController = PlayerObject.GetComponent<PlayerController>();
 
             RightHand = GameObject.FindWithTag("Arm");
+
+            InventoryMenuInstance = GameObject.FindGameObjectWithTag("InventoryMenuScript").
+                GetComponent<InventoryMenu>();
 
             InteractionCanvas = GameObject.FindGameObjectWithTag("InteractionCanvas")
                 .GetComponent<UnityEngine.Canvas>();

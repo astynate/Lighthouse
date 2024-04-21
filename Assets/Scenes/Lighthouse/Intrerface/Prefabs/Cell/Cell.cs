@@ -8,42 +8,36 @@ public class Cell : MonoBehaviour, IDragHandler, IDropHandler
 {
     [SerializeField] public Image SelectedImage;
 
-    [SerializeField] public Image Image;
+    [SerializeField] public Image image;
 
     private Item _item;
 
     private RectTransform _rectTransform;
 
-    private Vector3 _cellOriginalTransform;
-
     public Item[] Items;
 
     public int Index;
 
-    private UnityEngine.Canvas _canvas;
-
-    private void Awake()
+    private void Start()
     {
-        _canvas = GetComponentInParent<UnityEngine.Canvas>();
-        _canvas.sortingOrder = 5;
         SelectedImage.enabled = false;
-        _rectTransform = Image.GetComponent<RectTransform>();
+        _rectTransform = image.GetComponent<RectTransform>();
     }
 
     private void SetImage()
     {
         if (_item != null && _item.Image != null)
         {
-            Image.GetComponent<RectTransform>().anchoredPosition = SelectedImage
-                .GetComponent<RectTransform>().anchoredPosition;
+            _rectTransform.position = SelectedImage
+                .GetComponent<RectTransform>().position;
 
-            Image.sprite = _item.Image;
-            Image.enabled = true;
+            image.sprite = _item.Image;
+            image.enabled = true;
         }
         else
         {
-            Image.sprite = null;
-            Image.enabled = false;
+            image.sprite = null;
+            image.enabled = false;
         }
     }
 
@@ -52,11 +46,25 @@ public class Cell : MonoBehaviour, IDragHandler, IDropHandler
         _item = item; SetImage();
     }
 
-    public void Select() 
-        => SelectedImage.enabled = true;
+    public void Select()
+    {
+        if (_item != null)
+        {
+            _item.OnSelect();
+        }
+
+        SelectedImage.enabled = true;
+    }
     
-    public void UnSelect() 
-        => SelectedImage.enabled = false;
+    public void UnSelect()
+    {
+        if (_item != null)
+        {
+            _item.UnSelect();
+        }
+
+        SelectedImage.enabled = false;
+    }
 
     public void OnDrag(PointerEventData eventData)
     {

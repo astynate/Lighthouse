@@ -5,8 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public static Item[] Items { get; private set; } = new Item[3];
-    public static Item[] SpecialItems { get; private set; } = new Item[8];
-    public static Item[] BoxItems { get; private set; } = new Item[8];
+    public static Item[] SpecialItems { get; private set; } = new Item[4];
     public static int CurrentItemIndex { get; private set; } = 0;
 
     public delegate void OnItemsChanged();
@@ -74,7 +73,8 @@ public class Inventory : MonoBehaviour
     {
         if (Items[CurrentItemIndex] != null)
         {
-            Items[CurrentItemIndex].OnSelect();
+            Items[CurrentItemIndex].Selected();
+            InvokeChangeEvent();
         }
     }
 
