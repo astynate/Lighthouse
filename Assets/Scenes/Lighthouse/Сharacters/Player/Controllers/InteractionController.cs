@@ -31,7 +31,7 @@ public class InteractionController : MonoBehaviour
         _currentTime += Time.fixedDeltaTime;
 
         if (_currentTime > _toWait)
-        {        
+        {   
             HandleInteractions();
             _currentTime = 0.0f;
         }
@@ -56,6 +56,8 @@ public class InteractionController : MonoBehaviour
         {
             Inventory.UseCurrentItem();
         }
+
+        Inventory.OnSelect();
     }
 
     private void HandleInteractions()
@@ -83,10 +85,8 @@ public class InteractionController : MonoBehaviour
 
             _countItems = _hitColliders.Length;
         }
-        else if (_hitColliders.Length == 0)
-        {
-            Configuration.ScrollViewCanvas.enabled = false;
-        }
+
+        Configuration.ScrollViewCanvas.enabled = false;
     }
 
     private void NewItemToScrollBar(Collider hitCollider, Item item)

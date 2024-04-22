@@ -19,6 +19,17 @@ TagManager:
   - PanelTag
   - ScrollContent
   - Telephone
+  - Arm
+  - Undefined
+  - Special
+  - Box
+  - ItemName
+  - ItemDescription
+  - ItemImage
+  - Wear
+  - Preview
+  - InventoryMenuScript
+  - BoxItems
   layers:
   - Default
   - TransparentFX
@@ -27,10 +38,10 @@ TagManager:
   - Water
   - UI
   - Cell
-  - 
-  - 
-  - 
-  - 
+  - Walls
+  - Walls-Mesh
+  - Special
+  - Box
   - 
   - 
   - 

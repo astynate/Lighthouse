@@ -7,6 +7,11 @@ public class Generators : TriggerZone
     private float workTime;
     private int start;
 
+    public override void Interact()
+    {
+        throw new NotImplementedException();
+    }
+
     void Start()
     {
         System.Random random = new System.Random();

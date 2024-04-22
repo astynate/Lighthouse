@@ -2,39 +2,42 @@ using Assets.Scenes.Lighthouse;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Inventory;
 
 public class Cell : MonoBehaviour, IDragHandler, IDropHandler
 {
     [SerializeField] public Image SelectedImage;
 
-    [SerializeField] public Image Image;
+    [SerializeField] public Image image;
 
     private Item _item;
 
     private RectTransform _rectTransform;
 
-    private Vector3 _cellOriginalTransform;
+    public Item[] Items;
 
-    private void Awake()
+    public int Index;
+
+    private void Start()
     {
         SelectedImage.enabled = false;
-        _rectTransform = Image.GetComponent<RectTransform>();
+        _rectTransform = image.GetComponent<RectTransform>();
     }
 
     private void SetImage()
     {
         if (_item != null && _item.Image != null)
         {
-            Image.GetComponent<RectTransform>().anchoredPosition = SelectedImage
-                .GetComponent<RectTransform>().anchoredPosition;
+            _rectTransform.position = SelectedImage
+                .GetComponent<RectTransform>().position;
 
-            Image.sprite = _item.Image;
-            Image.enabled = true;
+            image.sprite = _item.Image;
+            image.enabled = true;
         }
         else
         {
-            Image.sprite = null;
-            Image.enabled = false;
+            image.sprite = null;
+            image.enabled = false;
         }
     }
 
@@ -43,11 +46,25 @@ public class Cell : MonoBehaviour, IDragHandler, IDropHandler
         _item = item; SetImage();
     }
 
-    public void Select() 
-        => SelectedImage.enabled = true;
+    public void Select()
+    {
+        if (_item != null)
+        {
+            _item.OnSelect();
+        }
+
+        SelectedImage.enabled = true;
+    }
     
-    public void UnSelect() 
-        => SelectedImage.enabled = false;
+    public void UnSelect()
+    {
+        if (_item != null)
+        {
+            _item.UnSelect();
+        }
+
+        SelectedImage.enabled = false;
+    }
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -55,22 +72,24 @@ public class Cell : MonoBehaviour, IDragHandler, IDropHandler
         {
             Configuration.DragableCell = this;
 
-            //_rectTransform.anchoredPosition += eventData.delta /
-            //    Configuration.InventoryCanvas.scaleFactor;
+            _rectTransform.anchoredPosition += eventData.delta /
+                Configuration.InventoryCanvas.scaleFactor;
         }
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag == null || Configuration.DragableCell == null)
+        if (Configuration.DragableCell == null || Configuration.DragableCell._item == _item)
         {
             return;
         }
 
-        Item buff = Configuration.DragableCell._item;
-        Configuration.DragableCell.Redraw(ref _item);
+        Item buff = Items[Index];
+        Items[Index] = Configuration.DragableCell.Items[Configuration.DragableCell.Index];
 
-        Redraw(ref buff);
+        Configuration.DragableCell.Items[Configuration.DragableCell.Index] = buff;
         Configuration.DragableCell = null;
+
+        InvokeChangeEvent();
     }
 }

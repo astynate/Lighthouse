@@ -14,6 +14,6 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        _stats.text = $"HP: {Configuration.PlayerController.GetHealthPoints}";
+        //_stats.text = $"HP: {Configuration.PlayerController.GetHealthPoints}";
     }
 }

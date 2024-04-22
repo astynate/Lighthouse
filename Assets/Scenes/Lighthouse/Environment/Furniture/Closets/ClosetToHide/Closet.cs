@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewBehaviourScript : TriggerZone
+public class Closet : TriggerZone
 {
     private Animator _animator;
 
@@ -63,15 +63,20 @@ public class NewBehaviourScript : TriggerZone
         }
     }
 
-    //public override void OnTriggerEnter(Collider other)
-    //{
-    //    base.OnTriggerEnter(other);
-    //    _isPlayerInCollider = other.gameObject.tag == "Player";
-    //}
+    public override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        _isPlayerInCollider = other.gameObject.tag == "Player";
+    }
 
-    //public override void OnTriggerExit(Collider other)
-    //{
-    //    _isAvailable = true;
-    //    _isPlayerInCollider = false;
-    //}
+    public override void OnTriggerExit(Collider other)
+    {
+        _isAvailable = true;
+        _isPlayerInCollider = false;
+    }
+
+    public override void Interact()
+    {
+        
+    }
 }
