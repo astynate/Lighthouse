@@ -38,21 +38,23 @@ public class GhostController : NPC
 
     private void FixedUpdate()
     {
-        if (_triggerZone.bounds.Contains(_playerObject.transform.position))
-        {
-            FollowCharacter();
-        }
-
         if (_damageZone.bounds.Contains(_playerObject.transform.position) && _isPlayerInDamageZone == false)
         {
             _isPlayerInDamageZone = true;
             StartCoroutine(MakeDamage());
         }
 
-        if (_damageZone.bounds.Contains(_playerObject.transform.position) == false && _isPlayerInDamageZone == true) 
+        if (_damageZone.bounds.Contains(_playerObject.transform.position) == false && _isPlayerInDamageZone == true)
         {
             _isPlayerInDamageZone = false;
             StopCoroutine(MakeDamage());
         }
+    }
+
+
+    private void Update()
+    {
+        Debug.Log(_triggerZone.bounds.Contains(_playerObject.transform.position));
+        Walk(_triggerZone.bounds.Contains(_playerObject.transform.position));
     }
 }

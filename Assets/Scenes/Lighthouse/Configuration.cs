@@ -17,6 +17,8 @@ namespace Assets.Scenes.Lighthouse
         public static GameObject RightHand { get; set; }
         public static InventoryMenu InventoryMenuInstance { get; set; }
 
+        public static bool isCall = false;
+
         private void Awake()
         {
             if (Instance != null)
