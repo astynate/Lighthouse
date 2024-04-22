@@ -23,17 +23,10 @@ namespace Assets.Scenes.Lighthouse.Сharacters.NPC
         private int points = 0;
 
 
-
-        //TelephoneScript phone;
-
-
         public void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
-            //phone = GameObject.FindGameObjectWithTag("Telephone").GetComponent<TelephoneScript>();
         }
-
-
 
         public void GetPlayer()
         {
@@ -45,15 +38,11 @@ namespace Assets.Scenes.Lighthouse.Сharacters.NPC
         {
             if (_player.isHide == true) return;
 
-
-            //phone.Zvonok();
-
             if (Vector3.Distance(transform.position, _playerObject.transform.position) >= minDistance)
             {
                 agent.SetDestination(_playerObject.transform.position);
             }
         }
-
 
         public void Walk(bool follow)
         {
@@ -69,6 +58,5 @@ namespace Assets.Scenes.Lighthouse.Сharacters.NPC
                 agent.SetDestination(_wayPoints[_currentPoint].transform.position);
             }
         }
-
     }
 }

@@ -45,4 +45,9 @@ public class TelephoneScript : TriggerZone, ISounds
             Configuration.isCall = false;
         }
     }
+
+    public override void Interact()
+    {
+        Debug.Log("Phone");
+    }
 }

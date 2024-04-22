@@ -7,9 +7,9 @@ public class ExampleCall : MonoBehaviour
     {
         if (!Configuration.isCall)
         {
-            TelephoneScript phone = GameObject.FindGameObjectWithTag("Telephone").GetComponent<TelephoneScript>();
-            phone.Calling();
-            Configuration.isCall = true;
+            //TelephoneScript phone = GameObject.FindGameObjectWithTag("Telephone").GetComponent<TelephoneScript>();
+            //phone.Calling();
+            //Configuration.isCall = true;
         }
     }
 }
