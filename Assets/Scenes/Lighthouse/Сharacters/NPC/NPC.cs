@@ -1,4 +1,4 @@
-﻿using Unity.VisualScripting;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,13 +20,13 @@ namespace Assets.Scenes.Lighthouse.Сharacters.NPC
 
         private int _currentPoint = 0;
 
-        private int points = 0;
-
 
         public void Awake()
         {
-            agent = GetComponent<NavMeshAgent>();
+            agent = GetComponentInChildren<NavMeshAgent>();
         }
+
+
 
         public void GetPlayer()
         {
@@ -38,25 +38,34 @@ namespace Assets.Scenes.Lighthouse.Сharacters.NPC
         {
             if (_player.isHide == true) return;
 
+
             if (Vector3.Distance(transform.position, _playerObject.transform.position) >= minDistance)
             {
                 agent.SetDestination(_playerObject.transform.position);
             }
         }
 
+
         public void Walk(bool follow)
         {
+            Debug.Log(follow);
+            agent.SetDestination(_wayPoints[_currentPoint].transform.position);
             if (follow)
+            {
                 FollowCharacter();
+            }
             else
             {
                 if (Vector3.Distance(transform.position, _wayPoints[_currentPoint].position) < 0.7f)
                 {
                     _currentPoint = (_currentPoint + 1) % _wayPoints.Length;
                 }
-
-                agent.SetDestination(_wayPoints[_currentPoint].transform.position);
+                Debug.Log("достігнута точка" + _currentPoint);
             }
+
+            
         }
+
+
     }
 }

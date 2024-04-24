@@ -30,6 +30,8 @@ TagManager:
   - Preview
   - InventoryMenuScript
   - BoxItems
+  - GhostWayPoint
+  - GhostModel
   layers:
   - Default
   - TransparentFX
