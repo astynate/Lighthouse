@@ -22,7 +22,6 @@ namespace Assets.Scenes.Lighthouse.Сharacters.NPC
 
         private int points = 0;
 
-
         public void Awake()
         {
             agent = GetComponent<NavMeshAgent>();

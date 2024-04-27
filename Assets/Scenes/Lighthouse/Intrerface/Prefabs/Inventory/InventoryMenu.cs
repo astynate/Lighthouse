@@ -67,7 +67,7 @@ public class InventoryMenu : InventoryObserver
 
     private void SelectCellByItem(Item item)
     {
-        Cell[][] cells = { _inventoryCells, _boxCells, _specialCells };
+        Cell[][] cells = { _inventoryCells, _specialCells };
 
         foreach (Cell[] cellArray in cells)
         {
@@ -75,9 +75,16 @@ public class InventoryMenu : InventoryObserver
             {
                 cell.UnSelect();
 
-                if (cell.Items[cell.Index] != null && cell.Items[cell.Index].Name == item.Name)
+                try
                 {
-                    cell.Select();
+                    if (cell.Items[cell.Index] != null && cell.Items[cell.Index] == item)
+                    {
+                        cell.Select();
+                    }
+                }
+                catch
+                {
+                    //Debug.Log(cell);
                 }
             }
         }
@@ -125,7 +132,7 @@ public class InventoryMenu : InventoryObserver
         }
         else
         {
-            SetPreviewFromItems(Inventory.SpecialItems, _boxCells[0].Items, Inventory.Items);
+            SetPreviewFromItems(Inventory.SpecialItems, Inventory.Items);
         }
 
         yield return new WaitForSecondsRealtime(delay);

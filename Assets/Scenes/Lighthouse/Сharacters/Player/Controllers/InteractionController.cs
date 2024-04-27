@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class InteractionController : MonoBehaviour
 {
-    private float _playerRadius = 1.5f;
+    private float _playerRadius = 2.5f;
 
     private LayerMask _itemLayerMask;
 
@@ -13,7 +13,7 @@ public class InteractionController : MonoBehaviour
 
     private float _currentTime = 0.0f;
 
-    private float _toWait = 0.1f;
+    private float _toWait = 0.05f;
 
     private KeyCode[] _inventoryKeycodes = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3 };
 
@@ -64,29 +64,44 @@ public class InteractionController : MonoBehaviour
     {
         _hitColliders = Physics.OverlapSphere(transform.position, _playerRadius, _itemLayerMask);
 
-        if (_hitColliders.Length == 1 && Input.GetKey(KeyCode.E))
+        if (_hitColliders.Length == 1)
         {
             Configuration.InteractionCanvas.enabled = true;
 
-            Item item = _hitColliders[0].GetComponent<Item>();
-            Inventory.AddItem(_hitColliders[0], item);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Item item = _hitColliders[0].GetComponent<Item>();
+                Inventory.AddItem(_hitColliders[0], item);
+            }
         }
-        else if (_hitColliders.Length > 0 && _hitColliders.Length != _countItems)
-        {
-            Configuration.ScrollViewCanvas.enabled = true;
 
+        else if (_hitColliders.Length > 1 && _hitColliders.Length != _countItems)
+        {
             DeleteAllTagObjects();
+
+            Configuration.InteractionCanvas.enabled = false;
+            Configuration.ScrollViewCanvas.enabled = true;
 
             foreach (Collider hitCollider in _hitColliders)
             {
                 Item refItem = hitCollider.GetComponent<Item>();
-                NewItemToScrollBar(hitCollider, refItem);
+
+                if (refItem.inInvenory == false)
+                {
+                    NewItemToScrollBar(hitCollider, refItem);
+                }
             }
 
             _countItems = _hitColliders.Length;
         }
+        
+        if (_hitColliders.Length == 0)
+        {
+            Configuration.InteractionCanvas.enabled = false;
+            Configuration.ScrollViewCanvas.enabled = false;
 
-        Configuration.ScrollViewCanvas.enabled = false;
+            _countItems = 0;
+        }
     }
 
     private void NewItemToScrollBar(Collider hitCollider, Item item)

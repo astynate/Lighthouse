@@ -10,6 +10,7 @@ namespace Assets.Scenes.Lighthouse
         public static PlayerController PlayerController { get; set; }
         public static UnityEngine.Canvas InteractionCanvas { get; set; }
         public static UnityEngine.Canvas InventoryCanvas { get; set; }
+        public static UnityEngine.Canvas NoteCanvas { get; set; }
         public static Vector3 DragableItemTransform { get; set; }
         public static Cell DragableCell { get; set; }
         public static UnityEngine.Canvas ScrollViewCanvas { get; set; }
@@ -38,10 +39,13 @@ namespace Assets.Scenes.Lighthouse
             InventoryMenuInstance = GameObject.FindGameObjectWithTag("InventoryMenuScript").
                 GetComponent<InventoryMenu>();
 
+            InventoryCanvas = GameObject.FindGameObjectWithTag("InventoryMenu")
+                .GetComponent<UnityEngine.Canvas>();
+
             InteractionCanvas = GameObject.FindGameObjectWithTag("InteractionCanvas")
                 .GetComponent<UnityEngine.Canvas>();
 
-            InventoryCanvas = GameObject.FindGameObjectWithTag("InventoryMenu")
+            NoteCanvas = GameObject.FindGameObjectWithTag("NoteView")
                 .GetComponent<UnityEngine.Canvas>();
 
             DontDestroyOnLoad(gameObject);

@@ -54,7 +54,7 @@ public class GhostController : NPC
 
     private void Update()
     {
-        Debug.Log(_triggerZone.bounds.Contains(_playerObject.transform.position));
+        //Debug.Log(_triggerZone.bounds.Contains(_playerObject.transform.position));
         Walk(_triggerZone.bounds.Contains(_playerObject.transform.position));
     }
 }

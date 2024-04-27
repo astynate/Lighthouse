@@ -30,6 +30,11 @@ TagManager:
   - Preview
   - InventoryMenuScript
   - BoxItems
+  - NoteView
+  - NoteImage
+  - ItemFX
+  - NoteName
+  - NoteDesc
   layers:
   - Default
   - TransparentFX
