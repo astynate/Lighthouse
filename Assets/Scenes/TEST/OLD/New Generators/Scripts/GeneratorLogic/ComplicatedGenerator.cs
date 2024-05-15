@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class ComplicatedGenerator : BasicGenerator
 {
-    public DummyAii dummy;
+    //public DummyAii dummy;
 
 
     public override void HandleRepair()
     {
-        if(_isPlayerInside){
-            ToolKit toolKit = dummy.Inventory.FirstOrDefault(x => x.GetType() == typeof(ToolKit)) as ToolKit;
-            if(toolKit != null){
-                IsWorking = true;
-                InvokeRepair();
-            }
+        //if(_isPlayerInside){
+          //  ToolKit toolKit = dummy.Inventory.FirstOrDefault(x => x.GetType() == typeof(ToolKit)) as ToolKit;
+           // if(toolKit != null){
+            //    IsWorking = true;
+           //     InvokeRepair();
+           // }
 
 
 
@@ -29,4 +29,4 @@ public class ComplicatedGenerator : BasicGenerator
         
     }
 
-}
+

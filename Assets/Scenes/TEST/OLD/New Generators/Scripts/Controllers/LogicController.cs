@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yd.TimeSystem;
 
 public class LogicController : MonoBehaviour
 {
@@ -22,8 +23,8 @@ public class LogicController : MonoBehaviour
     }
     void Start()
     {
-        GameObject.FindAnyObjectByType<UiController>().StartNewNight += ChangeNight;
-        ChangeNight();
+        //GameObject.FindAnyObjectByType<UiController>().StartNewNight += ChangeNight;
+        //ChangeNight();
     }
 
     void Update()
