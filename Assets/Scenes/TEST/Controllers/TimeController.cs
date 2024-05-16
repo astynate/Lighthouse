@@ -17,7 +17,7 @@ namespace Yd.Time
         void Awake()
         {
             generatorsController = GetComponent<GeneratorsController>();
-            nights.Enqueue(new Night("first", 1, 100));
+            nights.Enqueue(new Night("first", 1, 10));
             nights.Enqueue(new Night("second", 2, 120));
             nights.Enqueue(new Night("third", 2, 180));
         }
