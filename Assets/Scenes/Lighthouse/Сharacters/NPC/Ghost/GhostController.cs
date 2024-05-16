@@ -38,6 +38,12 @@ public class GhostController : NPC
 
     private void FixedUpdate()
     {
+        float distance = Vector3.Distance(_playerObject.transform.position, _triggerZone.bounds.center);
+        bool isInside = distance <= _triggerZone.bounds.extents.magnitude;
+
+        //Debug.Log(isInside);
+        Walk(isInside);
+
         if (_damageZone.bounds.Contains(_playerObject.transform.position) && _isPlayerInDamageZone == false)
         {
             _isPlayerInDamageZone = true;
@@ -49,11 +55,5 @@ public class GhostController : NPC
             _isPlayerInDamageZone = false;
             StopCoroutine(MakeDamage());
         }
-    }
-
-
-    private void Update()
-    {
-        Walk(_triggerZone.bounds.Contains(_playerObject.transform.position));
     }
 }

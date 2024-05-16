@@ -10,6 +10,7 @@ namespace Assets.Scenes.Lighthouse
         public static PlayerController PlayerController { get; set; }
         public static UnityEngine.Canvas InteractionCanvas { get; set; }
         public static UnityEngine.Canvas InventoryCanvas { get; set; }
+        public static UnityEngine.Canvas ReportCanvas { get; set; }
         public static Vector3 DragableItemTransform { get; set; }
         public static Cell DragableCell { get; set; }
         public static UnityEngine.Canvas ScrollViewCanvas { get; set; }
@@ -44,6 +45,11 @@ namespace Assets.Scenes.Lighthouse
             InventoryCanvas = GameObject.FindGameObjectWithTag("InventoryMenu")
                 .GetComponent<UnityEngine.Canvas>();
 
+            ReportCanvas = GameObject.FindGameObjectWithTag("ReportCanvas")
+              .GetComponent<UnityEngine.Canvas>();
+
+            ReportCanvas.enabled = false;
+
             DontDestroyOnLoad(gameObject);
 
             ScrollViewCanvas = GameObject.FindGameObjectWithTag("Bar")
@@ -54,6 +60,7 @@ namespace Assets.Scenes.Lighthouse
         {
             ScrollView = GameObject.FindGameObjectWithTag("ScrollContent").GetComponent<Image>();
             ScrollViewCanvas.enabled = false;
+            isCall = false;
         }
     }
 }

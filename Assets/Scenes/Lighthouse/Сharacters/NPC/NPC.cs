@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace Assets.Scenes.Lighthouse.Сharacters.NPC
@@ -20,10 +19,9 @@ namespace Assets.Scenes.Lighthouse.Сharacters.NPC
 
         private int _currentPoint = 0;
 
-
         public void Awake()
         {
-            agent = GetComponentInChildren<NavMeshAgent>();
+            agent = GetComponent<NavMeshAgent>();
         }
 
 
@@ -48,24 +46,18 @@ namespace Assets.Scenes.Lighthouse.Сharacters.NPC
 
         public void Walk(bool follow)
         {
-            Debug.Log(follow);
-            agent.SetDestination(_wayPoints[_currentPoint].transform.position);
-            if (follow)
-            {
+            if (follow) { 
                 FollowCharacter();
+                return;
             }
             else
             {
-                if (Vector3.Distance(transform.position, _wayPoints[_currentPoint].position) < 0.7f)
+                if (Vector3.Distance(transform.position, _wayPoints[_currentPoint].position) < 1f)
                 {
                     _currentPoint = (_currentPoint + 1) % _wayPoints.Length;
                 }
-                Debug.Log("достігнута точка" + _currentPoint);
+                agent.SetDestination(_wayPoints[_currentPoint].transform.position);
             }
-
-            
         }
-
-
     }
 }

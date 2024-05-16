@@ -18,7 +18,6 @@ TagManager:
   - Bar
   - PanelTag
   - ScrollContent
-  - Telephone
   - Arm
   - Undefined
   - Special
@@ -32,6 +31,10 @@ TagManager:
   - BoxItems
   - GhostWayPoint
   - GhostModel
+  - ReportCanvas
+  - ReportItem
+  - Phone
+  - Item
   layers:
   - Default
   - TransparentFX

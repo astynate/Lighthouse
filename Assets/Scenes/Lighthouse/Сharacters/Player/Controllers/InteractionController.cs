@@ -98,10 +98,13 @@ public class InteractionController : MonoBehaviour
 
         Transform child1 = instance.transform.GetChild(0);
         Transform child2 = instance.transform.GetChild(1);
+        Transform child3 = instance.transform.GetChild(2);
 
         Image childImage = child1.GetComponent<Image>();
         childImage.sprite = item.Image;
-        Button childButton = child2.GetComponent<Button>();
+
+
+        Button childButton = child3.GetComponent<Button>();
         
         childButton.onClick.AddListener(() => AddItemFromScrollbar(hitCollider, item));
     }
